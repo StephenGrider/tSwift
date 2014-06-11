@@ -1,0 +1,35 @@
+<ion-view title="Songs">
+  <ion-content class="has-header padding">
+      <div class="list">
+        <div collection-repeat="song in songs" collection-item-width="'100%'" collection-item-height="getItemHeight(item, $index)">
+
+          <div class="list card" ng-class="{lockedSong : song.locked}">
+            <div class="item item-avatar">
+              <img src="img/icon.jpeg">
+              <h2 class="songName">{{song.name}}</h2>
+              <p>{{song.date}}</p>
+            </div>
+
+            <div class="item item-body">
+              <img class="full-image" ng-src="img/{{song.imgUrl}}">
+<!--               <p>
+                In here I have some information about the song, maybe its origin or the meaning behind it
+                or something equaly lame.
+              </p> -->
+              <a class="button button-balanced playButton" href="#/tab/song/{{song.id}}" ng-hide="{{song.locked}}">
+                Watch Now!
+              </a>
+              <a class="button button-royal playButton" href="#/tab/song/{{song.id}}" ng-hide="!{{song.locked}}">
+                Unlock Now!
+              </a>
+              <p>
+                <a href="#/tab/song/{{song.id}}" class="subdued">{{song.likes}} Like</a>
+                <a href="#/tab/song/{{song.id}}" class="subdued">{{song.postCount}} Comments</a>
+              </p>
+            </div>
+          </div>
+
+        </div>
+    </div>
+  </ion-content>
+</ion-view>

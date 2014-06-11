@@ -1,0 +1,54 @@
+<ion-view title="{{song.name}}">
+  <ion-content has-header="true" padding="true">
+
+    <div class="video-container">
+         <iframe ng-src="{{trustSrc(song.videoUrl)}}" frameborder="0" >
+           <div class="spinner">
+            <div class="spinner-circle spinner-circle-outer"></div>
+            <div class="spinner-circle spinner-circle-inner"></div>
+            <div class="spinner-circle spinner-circle-single-1"></div>
+            <div class="spinner-circle spinner-circle-single-2"></div>
+            <div class="text">...loading...</div>
+          </div>
+         </iframe>
+    </div>
+
+    <br>
+    <div class="list postForm">
+       <div class="item item-divider">
+        Post a Message
+      </div>
+      <form name="post">
+        <label class="item item-input">
+          <input type="text" name="username" placeholder="Your Name" ng-model="postData.username"
+            required ng-minlength="3" ng-maxlength="14">
+            <span class="validation error" ng-show="post.username.$error.minlength">Too short!</span>
+            <span class="validation error" ng-show="post.username.$error.required">Required!</span><br>
+        </label>
+        <label class="item item-input">
+          <input type="text" name="message" placeholder="Message" ng-model="postData.message"
+            ng-minlength="3" ng-maxlength="140" required>
+          <span class="validation error" ng-show="post.message.$error.required">Required!</span><br>
+          <span class="validation error" ng-show="post.message.$error.minlength">Too short!</span>
+          <span class="validation error" ng-show="post.message.$error.maxlength">Too long!</span><br>
+        </label>
+      </form>
+      <button class="button button-block button-positive submitMessage" ng-click="postSubmit()">
+        Submit Message
+      </button>
+    </div>
+
+    <div ng-hide={{firebaseLoaded}}>Loading Messages...</div>
+    <div ng-repeat="post in posts">
+      <ul class="list messageList">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">{{post.username}} says</span>
+          <div class="message">{{post.message}}</div>
+        </label>
+      </ul>
+    </div>
+
+    <div class="messageLimit">Only the last 20 mesassages are displayed.</div>
+
+  </ion-content>
+</ion-view>

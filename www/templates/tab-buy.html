@@ -1,0 +1,28 @@
+<ion-view title="Get More">
+  <ion-content class="has-header">
+
+    <div class="list">
+      <a class="item item-thumbnail-left" href="#">
+        <img src="/img/icon.jpeg">
+        <h2>Unlock All Songs</h2>
+        <p>Taylor Swift</p>
+        <p>$6.99</p>
+      </a>
+    </div>
+
+
+    <div class="list" ng-repeat="song in songs">
+
+      <a class="item item-thumbnail-left" href="#">
+        <img src="{{song.imgUrl}}">
+        <h2>{{song.name}}</h2>
+        <p>Taylor Swift</p>
+        <p>$0.49</p>
+      </a>
+
+
+
+    </div>
+
+  </ion-content>
+</ion-view>
